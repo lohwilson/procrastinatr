@@ -1,10 +1,20 @@
 const router = require('express').Router();
 const User = require('../models/user.model');
+const userController = require('../controllers/userController');
 
-router.route('/').get((req, res) => {
-  User.find()
-  .then(users => res.json(users))
-  .catch(err => res.status(400).json('Error: ' + err))
+
+router.route('/').get( async (req, res) => {
+  try {
+    const response = await User.find()
+    const user = await response.json();
+    return user;
+  } catch (err) {
+    console.log('Error: ', err);
+  }
+
+  // User.find()
+  // .then(users => res.json(users))
+  // .catch(err => res.status(400).json('Error: ' + err))
 });
 
 router.route('/add').post((req, res) => {
@@ -15,5 +25,10 @@ router.route('/add').post((req, res) => {
   .then(() => res.json('User added!'))
   .catch(err => res.status(400).json('Error: ' + err));
 });
+
+router.get('/', userController.loginPage);
+router.post('/add', userController.createUsername);
+router.post('/signup', userController.createNewUser);
+
 
 module.exports = router;
