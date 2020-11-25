@@ -18,8 +18,8 @@ export class CreateExercise extends Component {
   async componentDidMount () {
     console.log("component did mount");
 
-    const response = await axios.get("http://localhost:4000/users/");
-    console.log(response);
+    // const response = await axios.get("http://localhost:4000/users/");
+    // console.log(response);
 
     axios.get("http://localhost:4000/users/").then((response) => {
       if (response.data.length > 0) {
