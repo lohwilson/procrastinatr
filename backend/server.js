@@ -22,8 +22,11 @@ connection.once('open', () => {
 
 const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
+const snippetrRouter = require('./routes/snippetr');
+
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
+app.use('/snippetr', snippetrRouter);
 
 app.listen(port, () => {
   console.log('server is running on port: ', port);
@@ -33,4 +36,3 @@ app.listen(port, () => {
 // generate random strong password
 // require('crypto').randomBytes(64).toString('hex');
 
-//download REST client
