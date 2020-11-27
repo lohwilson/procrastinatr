@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import styled from 'styled-components';
+
+const Div = styled.div`
+  height: 65vh
+`;
 
 export class SignUp extends Component {
   constructor(props) {
@@ -51,7 +56,7 @@ export class SignUp extends Component {
 
   render() {
     return (
-      <div>
+      <Div className="container">
         <h3>Create Account</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
@@ -100,7 +105,7 @@ export class SignUp extends Component {
             <input type="submit" value="Create Account" className="btn btn-primary" />
           </div>
         </form>
-      </div>
+      </Div>
     )
   }
 }

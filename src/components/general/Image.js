@@ -1,51 +1,56 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Div1 = styled.div`
   width: 49%;
-  height: 200px;
+  height: 350px;
   border: 1px solid black;
   margin: 10px 0px 10px 0px;
-  background-color: blue;
   color: white;
   text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const Div2 = styled.div`
   width: 49%;
-  height: 200px;
+  height: 350px;
   border: 1px solid black;
   margin: 10px 0px 10px 0px;
   background-color: black;
-  color: white;
   text-align: center;
+  padding: 150px;
 `;
 
-// const divStyle1 = {
-//   width: "49%",
-//   height: "200px",
-//   border: "1px solid black",
-//   margin: "10px 0px 10px 0px",
-//   backgroundColor: "black",
-//   color: "white",
-//   textAlign: "center",
-// };
+const animate = keyframes`
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+`;
 
-// const divStyle2 = {
-//   width: "49%",
-//   height: "200px",
-//   border: "1px solid black",
-//   margin: "10px 0px 10px 0px",
-//   backgroundColor: "red",
-//   color: "white",
-//   textAlign: "center",
-// };
+const H1 = styled.h1`
+  position: relative;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-repeat: no-repeat;
+  background-size: 70%;
+  animation: ${animate} 5s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+`;
 
 export class Image extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mouseOver: true,
+      mouseOver: false,
     };
   }
 
@@ -58,17 +63,17 @@ export class Image extends Component {
     return (
       <React.Fragment>
         {this.state.mouseOver ? (
-          <Div1 style={{backgroundImage=image}}
-            onMouseOver={() => this.toggleImage()}
+          <Div1 style={{backgroundImage: `url(${image})`}}
+            onMouseEnter={() => this.toggleImage()}
             onMouseLeave={() => this.toggleImage()}
           >
           </Div1>
         ) : (
           <Div2
-            onMouseOver={() => this.toggleImage()}
+            onMouseEnter={() => this.toggleImage()}
             onMouseLeave={() => this.toggleImage()}
           >
-            <h1>{someText}</h1>
+            <H1>{someText}</H1>
           </Div2>
         )}
       </React.Fragment>

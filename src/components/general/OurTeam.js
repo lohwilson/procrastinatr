@@ -1,9 +1,15 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
+
+const Div = styled.div`
+  height: 65vh
+`;
+
 
 export class OurTeam extends Component {
   render() {
     return (
-      <div>
+      <Div className="container">
         <h1>Our Team</h1>
         <div>
           <h2>CEO</h2>
@@ -39,7 +45,7 @@ export class OurTeam extends Component {
             authoritative history of lorem ipsum.
           </p>
         </div>
-      </div>
+      </Div>
     );
   }
 }

@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import auth from "../auth/auth";
+import styled from 'styled-components';
+
+const Div = styled.div`
+  height: 65vh
+`;
+
 
 export class Login extends Component {
   constructor(props) {
@@ -13,52 +20,40 @@ export class Login extends Component {
   }
 
   componentDidMount(){
-    console.log('sign up');
+    console.log('login');
   }
 
   onChange = (event) => {
     this.setState({ [event.target.id]: event.target.value });
   };
 
-  onSubmit = (event) => {
+  onLogin = async (event) => {
     event.preventDefault();
-
-    if(this.state.password !== this.state.confirmPassword){
-      console.log('password do not match');
-      return
-    }
-
     const user = {
       username: this.state.username,
       email: this.state.email,
       password: this.state.password
     };
+
     console.log(user);
-
-    axios.post('http://localhost:4000/users/add', user)
-      .then(res => console.log(res.data));
-
-    this.setState({
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
+    axios.post('http://localhost:4000/users/login', user)
+     .then(res => console.log(res.data));
+    auth.login(() => {
+      this.props.history.push('/dashboard')
     })
-
-
 
   };
 
   render() {
     return (
-      <div>
+      <Div className="container">
         <h3>Log In</h3>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onLogin}>
           <div className="form-group">
             <label htmlFor="username">Username: </label>
             <input type="text"
               required
-              className="form-control col-4"
+              className="form-control col-6"
               value={this.state.username}
               id="username"
               onChange={this.onChange}
@@ -69,8 +64,8 @@ export class Login extends Component {
             {" "}
             <label htmlFor="email">Email: </label>
             <input type="text"
-              required
-              className="form-control col-4"
+              
+              className="form-control col-6"
               value={this.state.email}
               id="email"
               onChange={this.onChange}
@@ -90,7 +85,14 @@ export class Login extends Component {
             <input type="submit" value="Log In" className="btn btn-primary" />
           </div>
         </form>
-      </div>
+        <button onClick={
+          () => {
+            auth.login(() => {
+              this.props.history.push("/MainPage")
+            })
+          }
+        }>Login</button>
+      </Div>
     )
   }
 }
