@@ -2,24 +2,26 @@ import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
 
 const Div1 = styled.div`
-  width: 49%;
+  width: 47%;
   height: 350px;
-  border: 1px solid black;
   margin: 10px 0px 10px 0px;
   color: white;
   text-align: center;
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: 15px 15px 15px grey;
+
 `;
 
 const Div2 = styled.div`
-  width: 49%;
+  width: 47%;
   height: 350px;
-  border: 1px solid black;
   margin: 10px 0px 10px 0px;
   background-color: black;
   text-align: center;
   padding: 150px;
+  box-shadow: 15px 15px 15px grey;
+
 `;
 
 const animate = keyframes`

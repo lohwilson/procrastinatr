@@ -8,7 +8,11 @@ const Div = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  border: 1px solid gold;
+  height: 800px;
+`;
+
+const H1 = styled.h1`
+  text-shadow: 4px 4px black;
 `;
 
 const box = [
@@ -47,7 +51,7 @@ export class MainPage extends Component {
   render() {
     return (
       <div style={{textAlign:'center'}}>
-        <h1>Welcome to Snippetr</h1>
+        <H1>Welcome to Snippetr</H1>
         <Div>
           {this.state.box.map((box, index) => (
             <Image someText={box.text} image={box.image} key={index} />

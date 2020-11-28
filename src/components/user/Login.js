@@ -7,7 +7,6 @@ const Div = styled.div`
   height: 65vh
 `;
 
-
 export class Login extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +14,8 @@ export class Login extends Component {
       username: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      errorMessage: "",
     };
   }
 
@@ -41,10 +41,10 @@ export class Login extends Component {
     auth.login(() => {
       this.props.history.push('/dashboard')
     })
-
   };
 
   render() {
+    const errorMessage = this.errorMessage? <h1></h1>: '';
     return (
       <Div className="container">
         <h3>Log In</h3>
@@ -85,13 +85,7 @@ export class Login extends Component {
             <input type="submit" value="Log In" className="btn btn-primary" />
           </div>
         </form>
-        <button onClick={
-          () => {
-            auth.login(() => {
-              this.props.history.push("/MainPage")
-            })
-          }
-        }>Login</button>
+        {errorMessage}
       </Div>
     )
   }

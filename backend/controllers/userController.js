@@ -29,7 +29,6 @@ module.exports = {
     try {
       const user = await User.findOne({username: req.body.username});
       if(bcrypt.compareSync(req.body.password, user.password)){
-        console.log(req.session.currentUser);
         console.log('successfully logged in');
       } else {
         console.log('error loggin in 2');
