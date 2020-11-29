@@ -36,7 +36,5 @@ module.exports = {
     } catch (err) {
       console.log('error logging in 1', err);
     }
-
-
   }
 }

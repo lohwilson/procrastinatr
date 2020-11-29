@@ -3,6 +3,11 @@ import CreateSnippets from './CreateSnippets'
 import ListAllSnippets from './ListAllSnippets'
 import Search from './Search';
 import Profile from '../user/Profile';
+import styled from 'styled-components';
+
+const Div = styled.div`
+
+`;
 
 export class Dashboard extends Component {
   constructor(props){
@@ -58,16 +63,20 @@ export class Dashboard extends Component {
   render() {
     return (
       <React.Fragment>
-        <div>
-          <button onClick={this.listAllSnippets}>List All Snippets</button>
-          <button onClick={this.createSnippets}>Create Snippet</button>
-          <button onClick={this.search}>Search</button>
-          <button onClick={this.profile}>Your Profile</button>
+        <div className="container">
+          <div>
+            <button onClick={this.listAllSnippets}>List All Snippets</button>
+            <button onClick={this.createSnippets}>Create Snippet</button>
+            <button onClick={this.search}>Search</button>
+            <button onClick={this.profile}>Your Profile</button>
+          </div>
+          <div>
+            {this.state.listAll && <ListAllSnippets/>}
+            {this.state.create && <CreateSnippets/>}
+            {this.state.search && <Search/>}
+            {this.state.profile && <Profile/>}
+          </div>
         </div>
-        {this.state.listAll ? <ListAllSnippets/> : ''}
-        {this.state.create ? <CreateSnippets/> : ''}
-        {this.state.search ? <Search/> : ''}
-        {this.state.profile ? <Profile/> : ''}
       </React.Fragment>
     )
   }

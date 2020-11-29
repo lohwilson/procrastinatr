@@ -21,6 +21,8 @@ export class Login extends Component {
 
   componentDidMount(){
     console.log('login');
+    // console.log(this.props.location.state.from.pathname);
+
   }
 
   onChange = (event) => {
@@ -39,7 +41,11 @@ export class Login extends Component {
     axios.post('http://localhost:4000/users/login', user)
      .then(res => console.log(res.data));
     auth.login(() => {
-      this.props.history.push('/dashboard')
+      if(!this.props.location.state){
+        this.props.history.push('/dashboard')
+      } else {
+        this.props.history.push(this.props.location.state.from.pathname)
+      }
     })
   };
 
@@ -64,7 +70,6 @@ export class Login extends Component {
             {" "}
             <label htmlFor="email">Email: </label>
             <input type="text"
-              
               className="form-control col-6"
               value={this.state.email}
               id="email"

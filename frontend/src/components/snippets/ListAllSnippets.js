@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import Snippets from "./Snippets";
-import SnippetOptions from "./SnippetOptions";
+import Snippet from "./Snippet";
 
 export class ListAllSnippets extends Component {
   constructor(props){
@@ -28,11 +27,12 @@ export class ListAllSnippets extends Component {
     const allSnippets = snippets.length ? (
       snippets.map(snippet => {
         return (
-          <div key={snippet._id}>
-            <div>
-              {snippet.title}
-              {snippet.story}
-            </div>
+          <div>
+            <Link to={{ pathname:'/snippet/' + snippet._id, snippet: snippet}} >
+            {/* <Link to={'/snippet/' + snippet._id}> */}
+              <span>{snippet.title}</span>
+            </Link>
+            <p>{snippet.story}</p>
           </div>
         )
       })
@@ -43,20 +43,8 @@ export class ListAllSnippets extends Component {
       <div>
         <h1>List all snippets</h1>
         <div>
-          <Link to="/create" className="nav-link">Create Snippet</Link>
-          <Link to="/edit" className="nav-link">Edit Snippets</Link>
-          <Link to="/search" className="nav-link">Search Snippets</Link>
-          <Link to="/show" className="nav-link">Show Snippets</Link>
-          <Link to="/profile" className="nav-link">Profile</Link>
-          <Link to="/" className="nav-link">Home</Link>
-        </div>
-
-        <div>
           {allSnippets}
         </div>
-        <SnippetOptions />
-        <Snippets />
-        
       </div>
     )
   }

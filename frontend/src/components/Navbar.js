@@ -40,23 +40,11 @@ export class Navbar extends Component {
             <Link to="/signup" className="nav-link">Sign Up</Link>
             </h4>
             <h4 className="navbar-item">
-            <Link to="/profile" className="nav-link">Profile</Link>
-            </h4>
-            <h4 className="navbar-item">
             <Link to="/dashboard" className="nav-link">Dashboard</Link>
             </h4>
-            <h4 className="navbar-item">
-            <Link to="/create" className="nav-link">Create Snippet</Link>
-            </h4>
-            <h4 className="navbar-item">
-            <Link to="/edit" className="nav-link">Edit Snippet</Link>
-            </h4>
-            <h4 className="navbar-item">
-            <Link to="/search" className="nav-link">Search</Link>
-            </h4>
           </div>
-          <button onClick={()=> auth.isAuthenticated()}>Click Me</button>
-          {showUser}
+          {/* <button onClick={()=> auth.isAuthenticated()}>Click Me</button>
+          {showUser} */}
         </div>
       </Nav>
       </React.Fragment>

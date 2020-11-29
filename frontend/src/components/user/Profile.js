@@ -5,6 +5,9 @@ export class Profile extends Component {
     return (
       <div>
         <h1>Profile</h1>
+        <div>
+
+        </div>
       </div>
     )
   }

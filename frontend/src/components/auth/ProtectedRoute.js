@@ -16,7 +16,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
             to={{
               pathname: "/login",
               state: {
-                from: props.location
+                from: props.location,
               }
             }}
             />
