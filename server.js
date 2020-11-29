@@ -11,7 +11,7 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/procrastinatr'
+const mongoURI = process.env.MONGODB_ATLAS_URI || 'mongodb://localhost:27017/snippetr'
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   () => console.log('MongoDB connection established:', mongoURI)
