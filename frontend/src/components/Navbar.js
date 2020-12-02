@@ -1,55 +1,64 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import auth from "../components/auth/auth";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 const Nav = styled.nav`
-  position: sticky;
-  top: 0;
-  z-index: 1
+  text-align: center;
 `;
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 export class Navbar extends Component {
   render() {
-    const isLoggedIn = auth.isAuthenticated()
-    console.log(isLoggedIn);
-    const showUser = isLoggedIn ? <h1>logged in</h1>: <h2>not logged in</h2>
     return (
       <React.Fragment>
-      <Nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to="/dashboard" className="navbar-brand"><h3>Snippetr</h3></Link>
-        {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button> */}
-        {/* <div className="collapse navbar-collapse" id="navbarNav"> */}
-        <div>
-          <div className="navbar-nav">
-            <h4 className="navbar-item">
-            <Link to="/" className="nav-link">Home</Link>
-            </h4>
-            <h4 className="navbar-item">
-            <Link to="/about" className="nav-link">About</Link>
-            </h4>
-            <h4 className="navbar-item">
-            <Link to="/ourteam" className="nav-link">Our Team</Link>
-            </h4>
-            <h4 className="navbar-item">
-            <Link to="/login" className="nav-link">Log In</Link>
-            </h4>
-            <h4 className="navbar-item">
-            <Link to="/signup" className="nav-link">Sign Up</Link>
-            </h4>
-            <h4 className="navbar-item">
-            <Link to="/dashboard" className="nav-link">Dashboard</Link>
-            </h4>
+        <Nav>
+          <Link to="/dashboard">
+            <h3>Snippetr</h3>
+          </Link>
+          <div>
+            <div>
+              <h4>
+                <Link to="/">Home</Link>
+              </h4>
+              <h4>
+                <Link to="/about">About</Link>
+              </h4>
+              <h4 className="navbar-item">
+                <Link to="/ourteam">Our Team</Link>
+              </h4>
+              <h4 className="navbar-item">
+                <Link to="/login">Log In</Link>
+              </h4>
+              <h4 className="navbar-item">
+                <Link to="/signup">Sign Up</Link>
+              </h4>
+              <h4 className="navbar-item">
+                <Link to="/dashboard">Dashboard</Link>
+              </h4>
+            </div>
+            <div>
+              <Button>Default</Button>
+              <Button color="primary">Primary</Button>
+              <Button color="secondary">Secondary</Button>
+              <Button disabled>Disabled</Button>
+              <Button href="#text-buttons" color="primary">
+                Link
+              </Button>
+            </div>
           </div>
-          {/* <button onClick={()=> auth.isAuthenticated()}>Click Me</button>
-          {showUser} */}
-        </div>
-      </Nav>
+        </Nav>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default Navbar
+export default Navbar;

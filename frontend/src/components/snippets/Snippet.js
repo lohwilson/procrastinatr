@@ -1,27 +1,31 @@
-import axios from 'axios'
-import React, { Component } from 'react'
+import axios from "axios";
+import React, { Component } from "react";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+
 
 export class Snippets extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       snippet: {
-        title: '',
-        story: ''
-      }
-    }
+        title: "",
+        story: "",
+      },
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     console.log(this.props.match.params.id);
     const id = this.props.match.params.id;
-    axios.get('http://localhost:4000/snippetr/'+ id)
-    .then(res => {
-      console.log(res.data)
+    axios.get("http://localhost:4000/snippetr/" + id).then((res) => {
+      console.log(res.data);
       this.setState({
-        snippet: res.data
-      })
-    })
+        snippet: res.data,
+      });
+    });
   }
 
   render() {
@@ -30,11 +34,19 @@ export class Snippets extends Component {
       <div>
         <h1>{title}</h1>
         <h3>{story}</h3>
+        <FormControlLabel
+          control={
+            <Checkbox
+              icon={<FavoriteBorder />}
+              checkedIcon={<Favorite />}
+              name="checkedH"
+            />
+          }
+          label="Custom icon"
+        />
       </div>
-    )
+    );
   }
 }
 
-export default Snippets
-
-
+export default Snippets;

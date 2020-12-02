@@ -8,8 +8,6 @@ const Div = styled.footer`
   display: flex;
   flex-wrap: wrap;
   color: white;
-  padding: 20px;
-
 `;
 
 const Ul = styled.ul`

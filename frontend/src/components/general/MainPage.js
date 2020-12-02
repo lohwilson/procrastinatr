@@ -5,15 +5,8 @@ import styled from "styled-components";
 const Div = styled.div`
   width: 80%;
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  height: 800px;
 `;
 
-const H1 = styled.h1`
-  text-shadow: 4px 4px black;
-`;
 
 const box = [
   {
@@ -41,17 +34,13 @@ export class MainPage extends Component {
     super(props);
     this.state = {
       box: box,
-      // text1: "text1",
-      // text2: "text2",
-      // text3: "text3",
-      // text4: "text4",
     };
   }
 
   render() {
     return (
-      <div style={{textAlign:'center'}}>
-        <H1>Welcome to Snippetr</H1>
+      <div>
+        <h1>Welcome to Snippetr</h1>
         <Div>
           {this.state.box.map((box, index) => (
             <Image someText={box.text} image={box.image} key={index} />
