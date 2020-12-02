@@ -1,10 +1,5 @@
 import axios from "axios";
 import React, { Component } from "react";
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-
 
 export class Snippets extends Component {
   constructor(props) {
@@ -34,16 +29,6 @@ export class Snippets extends Component {
       <div>
         <h1>{title}</h1>
         <h3>{story}</h3>
-        <FormControlLabel
-          control={
-            <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite />}
-              name="checkedH"
-            />
-          }
-          label="Custom icon"
-        />
       </div>
     );
   }
