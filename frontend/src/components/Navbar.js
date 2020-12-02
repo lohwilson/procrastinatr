@@ -49,10 +49,8 @@ export class Navbar extends Component {
               <Button>Default</Button>
               <Button color="primary">Primary</Button>
               <Button color="secondary">Secondary</Button>
-              <Button disabled>Disabled</Button>
-              <Button href="#text-buttons" color="primary">
-                Link
-              </Button>
+     
+   
             </div>
           </div>
         </Nav>
